@@ -16,6 +16,7 @@ var motion_x = 0.0
 var last_direction = 'right'
 var moon_shine = false
 var star_shine = false
+var can_exit = false
 
 func _ready():
 	set_physics_process(true)
@@ -28,6 +29,7 @@ func _ready():
 	get_parent().get_node('Star').connect('on_shine', self, '_on_Star_on_shine')
 	get_parent().get_node('Star').connect('on_remove_shine', self, '_on_Star_on_remove_shine')
 
+	get_parent().get_node('Exit').connect('can_exit', self, '_on_Exit_on_can_exit')
 func do_nothing():
 	pass
 
@@ -65,8 +67,12 @@ func jump():
 	jumps -= 1
 
 func _input(event):
-	if event.is_action_pressed('up'):
+	if event.is_action_pressed('jump'):
 		jump()
+	if event.is_action_pressed('exit'):
+		if can_exit:
+			get_tree().quit()
+			can_exit = false
 
 func handle_movement():
 	if Input.is_key_pressed(KEY_A):
@@ -118,3 +124,6 @@ func _on_Star_on_shine():
 	
 func _on_Star_on_remove_shine():
 	star_shine = false
+	
+func _on_Exit_on_can_exit():
+	can_exit = true

@@ -28,6 +28,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D"]
+scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
 walk_speed = 20000
 
@@ -48,5 +49,5 @@ position = Vector2( 0.120285, 3.36795 )
 scale = Vector2( 3.98455, 4.35292 )
 frames = SubResource( 2 )
 animation = "left"
-frame = 2
+frame = 3
 playing = true
