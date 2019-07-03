@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Root.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/black_fog_bg.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/DialogueHUD.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/textures/keyboard.png" type="Texture" id=11]
 [ext_resource path="res://scripts/AnimationPlayer.gd" type="Script" id=12]
+[ext_resource path="res://assets/textures/mouse.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Blink"
@@ -37,12 +38,40 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ), Vector2( 0.75, 0.75 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../KeyboardMouse:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.075, 0.075 ), Vector2( 0.09, 0.09 ), Vector2( 0.075, 0.075 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Blink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.075, 0.075 ), Vector2( 0.085, 0.085 ), Vector2( 0.075, 0.075 ) ]
 }
 
 [node name="Root" type="Node2D"]
@@ -67,7 +96,7 @@ position = Vector2( 195.502, 678.26 )
 position = Vector2( 761.502, 678.26 )
 
 [node name="Floor3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 71, 678 )
+position = Vector2( 90, 678 )
 
 [node name="Floor25" parent="." instance=ExtResource( 3 )]
 position = Vector2( 631, 678 )
@@ -158,6 +187,10 @@ scale = Vector2( 0.25, 0.25 )
 position = Vector2( -64.5133, 578.419 )
 scale = Vector2( 0.25, 0.25 )
 
+[node name="Star3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 79.4867, 578.419 )
+scale = Vector2( 0.25, 0.25 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 564.449, 488.546 )
 current = true
@@ -169,10 +202,10 @@ script = ExtResource( 5 )
 position = Vector2( 1822.03, 644.207 )
 
 [node name="Moon" parent="." instance=ExtResource( 7 )]
-position = Vector2( -64.3682, 608.2 )
+position = Vector2( -63.3682, 608.2 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( -55.0092, 545.235 )
+position = Vector2( -55.0092, 581.235 )
 jumps = 1
 max_jumps = 1
 walk_speed = 12000
@@ -190,8 +223,9 @@ text = "Stars: “Hurry please, I don’t know how long I can keep lighting the 
 collision_dimensions = Vector2( 1, 4 )
 
 [node name="DKey" type="Sprite" parent="."]
+editor/display_folded = true
 self_modulate = Color( 0.207843, 0.196078, 0.501961, 1 )
-position = Vector2( 43.1292, 569.072 )
+position = Vector2( -51.2265, 535.798 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 11 )
 region_enabled = true
@@ -202,8 +236,9 @@ anims/Blink = SubResource( 1 )
 script = ExtResource( 12 )
 
 [node name="SpaceKey" type="Sprite" parent="."]
+editor/display_folded = true
 modulate = Color( 0.223529, 0.2, 0.901961, 1 )
-position = Vector2( 48.1588, 601.448 )
+position = Vector2( 8.15878, 713.405 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 11 )
 region_enabled = true
@@ -211,4 +246,15 @@ region_rect = Rect2( 66.7778, 91.8889, 202.667, 24.8889 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="SpaceKey"]
 anims/Blink = SubResource( 2 )
+script = ExtResource( 12 )
+
+[node name="KeyboardMouse" type="Sprite" parent="."]
+modulate = Color( 0.196078, 0.219608, 0.784314, 1 )
+position = Vector2( 137.587, 580.035 )
+scale = Vector2( 0.075, 0.075 )
+texture = ExtResource( 13 )
+region_rect = Rect2( 427, 22, 153, 142 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="KeyboardMouse"]
+anims/Blink = SubResource( 3 )
 script = ExtResource( 12 )
