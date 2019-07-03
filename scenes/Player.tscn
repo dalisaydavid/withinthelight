@@ -31,6 +31,7 @@ animations = [ {
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 1 )
 walk_speed = 20000
+shrink_rate = Vector2( 0.002, 0.002 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -49,5 +50,5 @@ position = Vector2( 0.120285, 3.36795 )
 scale = Vector2( 3.98455, 4.35292 )
 frames = SubResource( 2 )
 animation = "left"
-frame = 3
+frame = 1
 playing = true

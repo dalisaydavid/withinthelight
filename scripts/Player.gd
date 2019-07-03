@@ -26,8 +26,11 @@ func _ready():
 	get_parent().get_node('Moon').connect('on_shine', self, '_on_Moon_on_shine')
 	get_parent().get_node('Moon').connect('on_remove_shine', self, '_on_Moon_on_remove_shine')
 	
-	get_parent().get_node('Star').connect('on_shine', self, '_on_Star_on_shine')
-	get_parent().get_node('Star').connect('on_remove_shine', self, '_on_Star_on_remove_shine')
+	var stars = get_tree().get_nodes_in_group("Star")
+	for star in stars:
+		print(star.get_name())
+		get_parent().get_node(star.get_name()).connect('on_shine', self, '_on_Star_on_shine')
+		get_parent().get_node(star.get_name()).connect('on_remove_shine', self, '_on_Star_on_remove_shine')
 
 	get_parent().get_node('Exit').connect('can_exit', self, '_on_Exit_on_can_exit')
 func do_nothing():

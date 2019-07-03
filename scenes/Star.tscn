@@ -9,7 +9,9 @@
 radius = 25.2122
 height = 294.559
 
-[node name="Star" type="Node2D"]
+[node name="Star" type="Node2D" groups=[
+"Star",
+]]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -19,8 +21,8 @@ scale = Vector2( 1.79455, 1.79455 )
 texture = ExtResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 47.5703, 1057.93 )
-scale = Vector2( 1.76726, 6.28072 )
+position = Vector2( 47.5703, 206.626 )
+scale = Vector2( 1.76726, 0.795955 )
 texture = ExtResource( 3 )
 energy = 2.0
 

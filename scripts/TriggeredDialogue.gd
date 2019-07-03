@@ -1,7 +1,10 @@
 extends Node2D
 
+export var text = 'Test'
+export var collision_dimensions = Vector2(1,1)
+
 func _ready():
-	pass # Replace with function body.
+	$RichTextLabel.text = text
 
 func _on_Area2D_body_entered(body):
 	if body.get_name() == 'Player':
