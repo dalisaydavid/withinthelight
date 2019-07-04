@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
 signal is_dead
+signal collected_star
+signal exited
 export var jumps = 2
 export var max_jumps = 2
 export var walk_speed = 5
@@ -13,6 +15,7 @@ export var height_scale_constraints = Vector2(.025, 1)
 var velocity = Vector2()
 var speed_y = 0.0
 var motion_x = 0.0
+var num_stars_collected = 0
 var last_direction = 'right'
 var moon_shine = false
 var star_shine = false
@@ -22,6 +25,7 @@ func _ready():
 	set_physics_process(true)
 	set_process_input(true)
 	
+	global_position = get_parent().get_node('Spawn').position
 	# @TODO: This sucks.
 	get_parent().get_node('Moon').connect('on_shine', self, '_on_Moon_on_shine')
 	get_parent().get_node('Moon').connect('on_remove_shine', self, '_on_Moon_on_remove_shine')
@@ -73,13 +77,15 @@ func _input(event):
 		jump()
 	if event.is_action_pressed('interact'):
 		if can_exit:
-			get_tree().quit()
+			emit_signal('exited')
 			can_exit = false
 
 		var stars = get_tree().get_nodes_in_group("Star")
 		for star in stars:
 			if star.shining:
 				star.queue_free()
+				num_stars_collected += 1
+				emit_signal('collected_star')
 				
 func handle_movement():
 	if Input.is_key_pressed(KEY_A):

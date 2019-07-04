@@ -1,0 +1,145 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/Scene1Root.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/black_fog_bg.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Floor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Star.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Camera.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Moon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Boulder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/DialogueHUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ScoreHUD.tscn" type="PackedScene" id=11]
+
+[node name="Root" type="Node2D"]
+position = Vector2( 0, 30 )
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 311.279, 389.939 )
+scale = Vector2( 4.9702, 4.74458 )
+texture = ExtResource( 2 )
+
+[node name="Floor17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 845.289, 780.699 )
+scale = Vector2( 0.25, 0.969999 )
+
+[node name="Floor12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 200.627, 690.959 )
+scale = Vector2( 1.0653, 2.30425 )
+
+[node name="Floor30" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1015.21, 718.669 )
+scale = Vector2( 0.25, 0.0369877 )
+
+[node name="Floor37" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1136.14, 607.819 )
+scale = Vector2( 0.33, 0.0100049 )
+
+[node name="Floor38" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1064.68, 638.816 )
+scale = Vector2( 0.33, 0.0100049 )
+
+[node name="Floor39" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1070.42, 695.044 )
+scale = Vector2( 0.33, 0.0100049 )
+
+[node name="Floor40" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1142.29, 666.923 )
+scale = Vector2( 0.33, 0.0100049 )
+
+[node name="Floor27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1420, 770.57 )
+scale = Vector2( 1.69053, 0.163745 )
+
+[node name="Floor7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 380, 663.823 )
+scale = Vector2( 0.315169, 0.514856 )
+
+[node name="Floor14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 540, 733.688 )
+scale = Vector2( 0.315169, 0.514856 )
+
+[node name="Floor16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 720, 760 )
+scale = Vector2( 0.315169, 0.514856 )
+
+[node name="Floor8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 948.832, 764.415 )
+scale = Vector2( 1.25, 0.25 )
+
+[node name="Floor18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1758.62, 721.216 )
+scale = Vector2( -1.44636, 0.0461083 )
+
+[node name="Floor25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1502.9, 747.744 )
+scale = Vector2( -0.406344, 0.206108 )
+
+[node name="Floor10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 911.914, 669.1 )
+scale = Vector2( 0.25, 0.62999 )
+
+[node name="Floor13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 945.913, 677.1 )
+scale = Vector2( 0.25, 0.50999 )
+
+[node name="Floor11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 930, 712.073 )
+scale = Vector2( 0.53001, 0.00999511 )
+
+[node name="Floor31" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1592.08, 729.52 )
+scale = Vector2( 1, 0.05 )
+
+[node name="Star" parent="." instance=ExtResource( 4 )]
+position = Vector2( 834, 634.872 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Star3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1330, 677.1 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Star2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 185.944, 459.755 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 564.449, 488.546 )
+scale = Vector2( 0.5, 0.5 )
+current = true
+zoom = Vector2( 0.85, 0.85 )
+limit_bottom = 800
+smoothing_enabled = true
+script = ExtResource( 5 )
+
+[node name="Exit" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1833.07, 701.878 )
+
+[node name="Moon" parent="." instance=ExtResource( 7 )]
+position = Vector2( 37.4236, 562.518 )
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 194.841, 432.276 )
+walk_speed = 12000
+jump_force = 35000
+width_scale_constraints = Vector2( 0.003, 0.25 )
+height_scale_constraints = Vector2( 0.003, 0.25 )
+
+[node name="Boulder" parent="." instance=ExtResource( 9 )]
+position = Vector2( 877, 732.271 )
+
+[node name="Boulder2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 981.499, 732.272 )
+
+[node name="DialogueHUD" parent="." instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 786.899, 499.761 )
+text = "Stars: “Hurry please, I don’t know how long I can keep lighting the sky.”"
+collision_dimensions = Vector2( 1, 4 )
+
+[node name="ScoreHUD" parent="." instance=ExtResource( 11 )]
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( 195.024, 423.832 )

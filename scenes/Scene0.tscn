@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://scripts/Root.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Scene0Root.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/black_fog_bg.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Floor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Star.tscn" type="PackedScene" id=4]
@@ -12,9 +12,26 @@
 [ext_resource path="res://scenes/DialogueHUD.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/textures/keyboard.png" type="Texture" id=11]
 [ext_resource path="res://scripts/AnimationPlayer.gd" type="Script" id=12]
-[ext_resource path="res://scenes/ScoreHUD.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/textures/shadow/moving_right/shadow_3.png" type="Texture" id=13]
+[ext_resource path="res://scenes/ScoreHUD.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
+resource_name = "Blink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ), Vector2( 0.75, 0.75 ) ]
+}
+
+[sub_resource type="Animation" id=2]
 resource_name = "Blink"
 length = 2.0
 tracks/0/type = "value"
@@ -46,8 +63,23 @@ tracks/0/keys = {
 "values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ), Vector2( 0.75, 0.75 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 resource_name = "Blink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ), Vector2( 0.75, 0.75 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -62,14 +94,42 @@ tracks/0/keys = {
 "values": [ Vector2( 0.55, 0.55 ), Vector2( 0.75, 0.75 ), Vector2( 0.55, 0.55 ) ]
 }
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="Animation" id=6]
+resource_name = "Blink"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("BigShadow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 7.27271 ), Vector2( 29.0911, 7.27271 ), Vector2( 58.1821, 7.27271 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BigShadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 0.75, 0.75 ), Vector2( 0.5, 0.5 ) ]
+}
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 [node name="Root" type="Node2D"]
 position = Vector2( 0, 30 )
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 314.864, 389.939 )
+position = Vector2( 311.279, 389.939 )
 scale = Vector2( 4.9702, 4.74458 )
 texture = ExtResource( 2 )
 
@@ -133,10 +193,12 @@ position = Vector2( 1418.44, 705.476 )
 position = Vector2( 1481.81, 703.09 )
 
 [node name="Floor18" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1708.42, 713.466 )
+position = Vector2( 1758.62, 721.216 )
+scale = Vector2( -1.44636, 0.0461083 )
 
-[node name="Floor23" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1810.57, 696.324 )
+[node name="Floor25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1716.6, 676.533 )
+scale = Vector2( -0.406344, 0.206108 )
 
 [node name="Floor9" parent="." instance=ExtResource( 3 )]
 position = Vector2( 946.015, 663.823 )
@@ -171,13 +233,13 @@ smoothing_enabled = true
 script = ExtResource( 5 )
 
 [node name="Exit" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1809.98, 663.665 )
+position = Vector2( 1833.07, 701.878 )
 
 [node name="Moon" parent="." instance=ExtResource( 7 )]
 position = Vector2( -63.3682, 618.2 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( 86.198, 662.138 )
+position = Vector2( 1774.93, 667.177 )
 walk_speed = 12000
 jump_force = 35000
 width_scale_constraints = Vector2( 0.003, 0.25 )
@@ -206,6 +268,7 @@ anims/Blink = SubResource( 1 )
 script = ExtResource( 12 )
 
 [node name="AKey" type="Sprite" parent="."]
+editor/display_folded = true
 modulate = Color( 0.278431, 0.278431, 0.278431, 0.862745 )
 position = Vector2( 132.262, 684.373 )
 scale = Vector2( 0.765889, 0.733452 )
@@ -214,10 +277,37 @@ region_enabled = true
 region_rect = Rect2( 48, 48, 21, 22 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AKey"]
+anims/Blink = SubResource( 2 )
+script = ExtResource( 12 )
+
+[node name="WKey" type="Sprite" parent="."]
+editor/display_folded = true
+modulate = Color( 0.278431, 0.278431, 0.278431, 0.862745 )
+position = Vector2( 849.267, 603.221 )
+scale = Vector2( 0.765889, 0.733452 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 66.2222, 25.3333, 20, 18.6667 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WKey"]
 anims/Blink = SubResource( 3 )
 script = ExtResource( 12 )
 
+[node name="WKey2" type="Sprite" parent="."]
+editor/display_folded = true
+modulate = Color( 0.278431, 0.278431, 0.278431, 0.862745 )
+position = Vector2( 1831.4, 663.339 )
+scale = Vector2( 0.765889, 0.733452 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 66.2222, 25.3333, 20, 18.6667 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WKey2"]
+anims/Blink = SubResource( 4 )
+script = ExtResource( 12 )
+
 [node name="SpaceKey" type="Sprite" parent="."]
+editor/display_folded = true
 modulate = Color( 0.278431, 0.278431, 0.278431, 0.862745 )
 position = Vector2( 449.275, 716.014 )
 scale = Vector2( 0.55, 0.55 )
@@ -226,16 +316,35 @@ region_enabled = true
 region_rect = Rect2( 66.7778, 91.8889, 202.667, 24.8889 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="SpaceKey"]
-anims/Blink = SubResource( 2 )
+anims/Blink = SubResource( 5 )
+script = ExtResource( 12 )
+
+[node name="ShrinkDirections" type="Node2D" parent="."]
+editor/display_folded = true
+modulate = Color( 0.278431, 0.278431, 0.278431, 0.862745 )
+position = Vector2( 1701.74, 644.792 )
+scale = Vector2( 0.55, 0.55 )
+
+[node name="BigShadow" type="Sprite" parent="ShrinkDirections"]
+position = Vector2( 29.0911, 7.27271 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShrinkDirections"]
+anims/Blink = SubResource( 6 )
 script = ExtResource( 12 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 1506.45, 709.652 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -33.2075, 13.1853 )
 scale = Vector2( 32.6047, 10.4555 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
-[node name="ScoreHUD" parent="." instance=ExtResource( 13 )]
+[node name="ScoreHUD" parent="." instance=ExtResource( 14 )]
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( 81.1303, 627.693 )

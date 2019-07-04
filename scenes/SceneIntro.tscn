@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scripts/SceneIntro.gd" type="Script" id=1]
+[ext_resource path="res://scripts/VBoxContainer.gd" type="Script" id=2]
+[ext_resource path="res://scripts/HBoxContainer.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/dark-forest/darkforest 1.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/textures/shadow/moving_right/shadow_0.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/shadow/moving_right/shadow_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/shadow/moving_right/shadow_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/shadow/moving_right/shadow_3.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Star.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Moon.tscn" type="PackedScene" id=10]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/dark-forest/darkforest.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 75
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 45
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://assets/fonts/dark-forest/darkforest.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = SubResource( 4 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://assets/fonts/dark-forest/darkforest.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 35
+font_data = SubResource( 7 )
+
+[node name="SceneIntroHUD" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -7.0
+margin_bottom = 16.0
+script = ExtResource( 1 )
+next_scene = "res://scenes/Scene0.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1017.0
+margin_bottom = 616.0
+script = ExtResource( 2 )
+
+[node name="HBoxContainer0" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
+margin_right = 1017.0
+margin_bottom = 126.0
+alignment = 1
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer0"]
+editor/display_folded = true
+margin_left = 253.0
+margin_right = 764.0
+margin_bottom = 126.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer0/VBoxContainer"]
+margin_right = 511.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Within The Light"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer0/VBoxContainer"]
+margin_top = 80.0
+margin_right = 511.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 3 )
+text = "by Urodela and DarkRunner"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 130.0
+margin_right = 1017.0
+margin_bottom = 134.0
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 138.0
+margin_right = 1017.0
+margin_bottom = 142.0
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+margin_top = 146.0
+margin_right = 1017.0
+margin_bottom = 150.0
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 154.0
+margin_right = 1017.0
+margin_bottom = 325.0
+alignment = 1
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer1"]
+margin_left = 30.0
+margin_right = 987.0
+margin_bottom = 171.0
+custom_fonts/font = SubResource( 5 )
+text = "
+Shadow, Moon and Stars are best friends.  They explore and help each other every night.
+
+Shadow sets out to explore the night looking for clues as to what is stealing the lights 
+from the sky.  Moon chooses to use what little light it has remaining to help  Shadow
+investigate and try to rescue Stars lights."
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 329.0
+margin_right = 1017.0
+margin_bottom = 329.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer2"]
+position = Vector2( 190.613, 160.563 )
+scale = Vector2( 3.12616, 3.49358 )
+frames = SubResource( 6 )
+frame = 3
+playing = true
+
+[node name="Star" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+position = Vector2( 350.37, 74.084 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Star2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+position = Vector2( 500.37, 134.084 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Star3" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+position = Vector2( 630.37, 74.084 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Star4" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 9 )]
+position = Vector2( 770.37, 154.084 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 333.0
+margin_right = 1017.0
+margin_bottom = 564.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 355.0
+margin_right = 661.0
+margin_bottom = 231.0
+custom_fonts/font = SubResource( 8 )
+text = "
+
+
+
+
+Press ENTER to play."
+align = 1
+valign = 1
+
+[node name="Moon" parent="." instance=ExtResource( 10 )]
