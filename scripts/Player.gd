@@ -28,7 +28,6 @@ func _ready():
 	
 	var stars = get_tree().get_nodes_in_group("Star")
 	for star in stars:
-		print(star.get_name())
 		get_parent().get_node(star.get_name()).connect('on_shine', self, '_on_Star_on_shine')
 		get_parent().get_node(star.get_name()).connect('on_remove_shine', self, '_on_Star_on_remove_shine')
 
@@ -72,11 +71,16 @@ func jump():
 func _input(event):
 	if event.is_action_pressed('jump'):
 		jump()
-	if event.is_action_pressed('exit'):
+	if event.is_action_pressed('interact'):
 		if can_exit:
 			get_tree().quit()
 			can_exit = false
 
+		var stars = get_tree().get_nodes_in_group("Star")
+		for star in stars:
+			if star.shining:
+				star.queue_free()
+				
 func handle_movement():
 	if Input.is_key_pressed(KEY_A):
 		velocity.x = -walk_speed

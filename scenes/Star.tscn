@@ -21,6 +21,7 @@ scale = Vector2( 1.79455, 1.79455 )
 texture = ExtResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
+editor/display_folded = true
 position = Vector2( 47.5703, 206.626 )
 scale = Vector2( 1.76726, 0.795955 )
 texture = ExtResource( 3 )
